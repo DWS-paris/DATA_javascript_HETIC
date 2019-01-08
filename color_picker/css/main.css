@@ -1,0 +1,10 @@
+body{
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    height: 100vh;
+}
+
+header{
+    margin: auto;
+}
