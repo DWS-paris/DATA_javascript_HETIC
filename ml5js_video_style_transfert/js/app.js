@@ -40,6 +40,7 @@ function draw(){
   // When we get the results, update the result image src
 function gotResult(err, img) {
     resultImg.setAttribute('src', img.src);
+    console.log(resultImg)
 
     if (isTransferring) {
         style.transfer(gotResult); 

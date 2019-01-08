@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>ML5js Video Feature Extractor</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        <link rel="stylesheet" href="./css/main.css">
+    </head>
+    <body>
+        <header>
+            <h1><span>Exercife ML5js.org</span> Video Feature Extractor</h1>
+            <p>Cet exemple répertorie les images à l'aide de la méthode d'extraction de caractéristiques sur MobileNet. Cela vous permettra de former un réseau de neurones afin de distinguer deux ensembles différents d'images personnalisées.</p>
+        </header>
+        <main>
+            <section>
+                <article id="myCanvas">
+                    <video id="video" width="640" height="480" autoplay></video>
+                </article>
+                <article>
+                    <h2>Add direction images</h2>
+                    <p>Click on each arrow to add 15 images for each direction</p>
+                    <nav>
+                        <ul>
+                            <li><button direction-data="left"><i class="fas fa-arrow-left"></i></button></li>
+                            <li>
+                                <button direction-data="up"><i class="fas fa-arrow-up"></i></button>
+                                <button direction-data="down"><i class="fas fa-arrow-down"></i></button>
+                            </li>
+                            <li><button direction-data="right"><i class="fas fa-arrow-right"></i></button></li>
+                        </ul>
+                        <ul>
+                            <li><span>0</span>/15 left images</li>
+                            <li><span>0</span>/15 up images</li>
+                            <li><span>0</span>/15 down images</li>
+                            <li><span>0</span>/15 right images</li>
+                        </ul>
+                        <div>
+                            <button id="trainButton">Train</button><button id="predictButton">Start</button>
+                        </div>
+                    </nav>
+                </article>
+            </section>
+
+            <section id="myResult"></section>
+        </main>
+
+        <footer>
+            <h3>Resources</h3>
+            <ul>
+                <li><a href="https://ml5js.org/" target="_blank">ML5js.org</a></li>
+                <li><a href="https://github.com/tensorflow/tfjs-models/tree/master/mobilenet" target="_blank">Model MobiNet</a></li>
+            </ul>
+            <p>Under WTFPL Public Licence by Julien Noyer</p>
+        </footer>
+        <script src="https://unpkg.com/ml5@0.1.2/dist/ml5.min.js" type="text/javascript"></script>
+        <script src="./js/app.js"></script>
+    </body>
+</html>
