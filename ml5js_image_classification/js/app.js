@@ -36,6 +36,40 @@ Fonction pour ajouter une image dans le canvas
     };
 //
 
+/* 
+Fonctions d'analyse
+*/
+    // Classification de l'image
+    const classifyImage = img => {
+        // Utilisation du modèle MobileNet
+        classifier.predict( img, 5, getPrediction )
+    };
+
+    // Prédictioon
+    const getPrediction = (err, results) => {
+        results ? getPredictionResults(results) : console.error(err);
+    }
+//
+
+/* 
+Afficher les résultats dans le DOM
+*/
+    const getPredictionResults = (results) => {
+        // Append canvas
+        document.querySelector('#myCanvas').appendChild(myCanvas);
+
+        // Append result
+        myResult.innerHTML = `<h2>Prediction results</h2>`;
+        resultList = document.createElement('ul');
+        results.map( item => {
+            resultList.innerHTML += `<li>${item.className} <b>Confidence : ${item.probability}</b></li>`;
+        });
+        myResult.appendChild(resultList)
+    }
+//
+
+
+
 
 
 /* 
