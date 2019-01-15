@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Les algorithmes de tri : le tri par selection</title>
+        <style>
+            footer,h1{text-transform:uppercase}*{margin:0;padding:0;box-sizing:border-box}html{font-size:62.5%}body{font-size:1.2rem;font-family:sans-serif;font-weight:100;padding:4rem;}img{float:right;height:9rem;margin-left:1rem}h1{font-weight:200;font-size:1.5rem;margin-bottom:1rem}footer,header,main{max-width:50rem;padding:2rem;margin:2rem auto}footer,header{border:.5rem solid #eee}footer{margin-top:5rem;font-size:1rem}ul { padding: 0 0 0 2rem; }li:first-child, li:last-child { list-style: none; font-weight: 800; font-size: 1.3rem; margin: 1rem 0 1rem -2rem;}header::after{content:'';display:block;clear:both;}
+        </style>
+    </head>
+    <body>
+        <header>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif" alt="Wikipedia : Le tri par selection">
+            <h1>Les algorithmes de tri : <b>le tri par selection</b></h1>
+            <p>Il consiste à trouver dans le tableau le numéro de l’élément le plus petit, c’est-à-dire l’entier minminimum. Une fois ce numéro trouvé, les éléments sont échangés, cet échange nécessite, puis la même procédure est appliquée sur la suite d’éléments.</p>
+        </header>
+
+        <main>
+            <h2>Résultat</h2>
+            <ul></ul>
+        </main>
+
+        <footer>Under WTFPL Licence 2018 - Julien Noyer</footer>
+
+        <script>
+            /*
+            Declarations
+            */
+                let listTag = document.querySelector(`ul`);
+                let data = [6, 1, 12, 0, 25, 7, 29, 3, 45];
+                let bigData = [6, 1, 12, 0, 25, 7, 29, 3, 45, 9, 65, 2, 87, 30, 16, 5, 14, 67, 56, 8];
+                let min = undefined;
+                let sorted = false;
+                let step = 0;
+            //
+            
+
+            /*
+            Select Sort Javascript function
+            */
+                const selectSort = (collection) => {
+                    // IHM
+                    listTag.innerHTML += `<li>Données de départ : [${collection}]</li>`
+
+                    // Start first sorting
+                    for(let i = 0; i < collection.length; i++){
+                        // One step
+                        step++;
+
+                        // Start seconde sorting
+                        for(let j = i + 1; j < collection.length; j++){
+                            // One step
+                            step++;
+
+                            // Check if current data is lower than the next one
+                            if( collection[j] < collection[i]  ){
+                                // One step
+                                step++;
+
+                                // Inverse data
+                                let temp = collection[i]
+                                collection[i] = collection[j];
+                                collection[j] = temp
+
+                                // IHM
+                                listTag.innerHTML += `<li>Select : <b>${collection[j]}</b> est plus petit que <b>${collection[i]}</b></li>`;
+                            }
+                        }
+                    }
+
+                    // IHM
+                    listTag.innerHTML += `<li>Tableau trié en ${step} étapes : [${data}]</li>`;
+                };
+            // 
+
+            /*
+            Wait for DOM elements to call the function
+            */
+                document.addEventListener( "DOMContentLoaded", (event) => selectSort(bigData) );
+            //
+        </script>
+    </body>
+</html>
