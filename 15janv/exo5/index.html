@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>D3js : parse CSV to JSON</title>
+    </head>
+    <body>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script>
+            // Déclaration de variables
+            let cityCollection;
+            
+            // Utilisation des Promises JS
+            Promise.all([
+                d3.csv('./data/cities.csv'),
+                d3.csv('./data/cities.index.csv')
+            ])
+            .then( rawData => {
+                console.log(rawData);
+
+                // Combiner les deux tableaux
+                for( let city of rawData[0] ){
+                    let cityState = city.state;
+                    city.population = +city.population;
+                    city["land area"] = +city["land area"];
+
+                    // Boucle sur l'index
+                    for( let cityIndex of rawData[1] ){
+                        // Comparer cityState avec cityIndex.index
+                        if( cityState === cityIndex.index){
+                            // Combiner les données
+                            city.state = cityIndex.state;
+                        };
+                    };
+                };
+
+                // Renvoyer les données
+                return rawData[0];
+            })
+            .then( combinatedData => {
+                cityCollection = combinatedData;
+                console.log(cityCollection);
+            })
+            .catch( err => {
+                console.error(err);
+            });
+        </script>
+    </body>
+</html>
