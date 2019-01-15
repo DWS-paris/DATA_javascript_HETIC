@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Les algorithmes de tri : le tri a bulle</title>
+        <style>
+            footer,h1{text-transform:uppercase}*{margin:0;padding:0;box-sizing:border-box}html{font-size:62.5%}body{font-size:1.2rem;font-family:sans-serif;font-weight:100;padding:4rem;}img{float:left;width:14rem;margin-right:1rem}h1{font-weight:200;font-size:1.5rem;margin-bottom:1rem}footer,header,main{max-width:50rem;padding:2rem;margin:2rem auto}footer,header{border:.5rem solid #eee}footer{margin-top:5rem;font-size:1rem}ul { padding: 0 0 0 2rem; }li:first-child, li:last-child { list-style: none; font-weight: 800; font-size: 1.3rem; margin: 1rem 0 1rem -2rem;}header::after{content:'';display:block;clear:both;}
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Les algorithmes de tri : <b>le tri a bulle</b></h1>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Sorting_bubblesort_anim.gif" alt="Wikipedia : Le tri a bulle">
+            <p>Il consiste à parcourir le tableau en permutant toutes les paire d’éléments consécutifs non ordonnés. Après le premier parcours, le plus grand élément se retrouve dans la deuxième case du tableau, il reste donc à appliquer la même procédure sur les autres données en paçant les plus grandes données vers la droite.</p>
+        </header>
+
+        <main>
+            <section></section>
+            <h2>Résultat</h2>
+            <ul></ul>
+        </main>
+
+        <footer>Under WTFPL Licence 2018 - Julien Noyer</footer>
+
+        <script>
+            /*
+            Declarations
+            */
+                let listTag = document.querySelector(`ul`);
+                let data = [6, 1, 12, 0, 25, 7, 29, 3, 45];
+                let bigData = [6, 1, 12, 0, 25, 7, 29, 3, 45, 9, 65, 2, 87, 30, 16, 5, 14, 67, 56, 8];
+                let sorted = false;
+                let step = 0;
+            //
+            
+
+            /*
+            Bubble Sort Javascript function
+            */
+                const bubbleSort = (collection) => {
+                    // IHM
+                    listTag.innerHTML += `<li>Données de départ : [${collection}]</li>`
+
+                    // Declaration
+                    let dataSize = collection.length;
+
+                    // Start sorting
+                    while( sorted === false ){
+                        // One step
+                        step++;
+
+                        // Inverse sorted value
+                        sorted = true;
+
+                        // Start iteration
+                        for( let i = 0; i < dataSize; i++ ){
+                            // One step
+                            step++;
+
+                            // Check if current data is higher than the next one
+                            if( collection[i] > collection[i + 1]  && collection[i] !== collection[i + 1] ){
+                                
+                                // Inverse data
+                                let temp = collection[i + 1]
+                                collection[i + 1] = collection[i]
+                                collection[i] = temp
+                                sorted = false;
+
+                                // IHM
+                                listTag.innerHTML += `<li>Bulbble : <b>${collection[i]}</b> est plus petit que <b>${collection[i + 1]}</b></li>`;
+                            }
+                        }
+
+                        // Reduce iteration number
+                        dataSize--;
+                    }
+
+                    // IHM
+                    listTag.innerHTML += `<li>Tableau trié en ${step} étapes : [${collection}]</li>`;
+                };
+            // 
+
+            /*
+            Wait for DOM elements to call the function
+            */
+                document.addEventListener( "DOMContentLoaded", (event) => bubbleSort(bigData) );
+            //
+        </script>
+    </body>
+</html>
