@@ -46,21 +46,21 @@
                         minValue = collection[i];
 
                         // Déclarer une variable pour la boucle WHILE
-                        let j = i - 1;
+                        let j = i;
 
                         // Comparer minValue avec les reste des index
-                        while( minValue < collection[j] && j >= 0 ){
-                            console.log(`${minValue} < ${collection[j]}`);
+                        while( minValue < collection[j - 1] && j >= 1 ){
+                            console.log(`${minValue} < ${collection[j - 1]}`);
 
                             // Inverse data
-                            collection[i] = collection[j + 1];
+                            collection[j] = collection[j - 1];
 
                             // Decrease j
                             j--;
                         };
 
                         // Inverse data
-                        collection[j + 1] = minValue;
+                        collection[j] = minValue;
                     };
                     console.log(collection);
                 };
