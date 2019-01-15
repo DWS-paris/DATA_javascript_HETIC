@@ -24,7 +24,7 @@
                 for( let city of rawData[0] ){
                     let cityState = city.state;
                     city.population = +city.population;
-                    city["land area"] = +city["land area"];
+                    city.land_area = +city.land_area;
 
                     // Boucle sur l'index
                     for( let cityIndex of rawData[1] ){
@@ -42,6 +42,25 @@
             .then( combinatedData => {
                 cityCollection = combinatedData;
                 console.log(cityCollection);
+
+                // Afficher dans la console la ville la plus petite
+                const minCity = d3.min( cityCollection, (city) => {
+                    return city.land_area;
+                });
+
+                // Afficher dans la console la ville la plus petite et la plus grande
+                const minMaxCity = d3.extent( cityCollection, (city) => {
+                    return city.land_area;
+                })
+
+                // Afficher dans la console la ville la plus peuplée
+                const maxPeople = d3.max( cityCollection, (city) => {
+                    return city.population;
+                })
+
+                console.log(minCity);
+                console.log(minMaxCity);
+                console.log(maxPeople);
             })
             .catch( err => {
                 console.error(err);

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>D3js : Working with Strings</title>
+        <style>
+        body { display: flex; flex-direction: column; height: 100vh; }
+        section { margin: auto; font-size: 5rem; }
+        </style>
+    </head>
+    <body>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script>
+             
+            //  Déclaration de variables
+            let myChar = `Hello World`;
+
+            //=> Afficher dans la console "W"
+            console.log( myChar[6] );
+
+            //=> Afficher dans la console "World"
+            let myCharSlice = myChar.slice( 6, myChar.length);
+            console.log(myCharSlice);
+
+            // Fonction javascript dans une STRING
+            let randomNumber = 10;
+            console.log(`La valeur de randomNumber est ${ randomNumber * 2 } `);
+
+            // Rechercher
+            if( myChar.indexOf('World') !== -1 ){
+                console.log( `Le mot "World" est présent à l'index ${myChar.indexOf('World')} de la variable myChar` );
+            };
+
+            // Supprimer/Remplacer
+            let newChar = myChar.replace('World', 'HETIC');
+
+            // Afficher le résultat dans le DOM
+            document.querySelector('body').innerHTML = `
+                <section>
+                    <p>${newChar}</p>
+                </section>
+            `;
+        </script>
+    </body>
+</html>
