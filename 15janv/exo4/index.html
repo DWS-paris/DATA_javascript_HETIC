@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>D3js : parse CSV to JSON</title>
+    </head>
+    <body>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script>
+            
+            // Convertir le fichier CSV en JSON
+            d3.csv('./data/cities.csv')
+            .then( rawData => {
+                console.log(rawData);
+
+                // Boucle FOR...OF sur la collection de données
+                for( const item of rawData ){
+                    // ES6 Conversion en INT.
+                    item.population = +item.population; // eg. parseInt()
+                    item['land area'] = +item['land area']; // eg. parseFloat()
+
+                    console.log(item);
+                };
+            })
+            .catch( err => {
+                console.error(err);
+            });
+        </script>
+    </body>
+</html>
